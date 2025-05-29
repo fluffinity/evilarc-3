@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (c) 2009, Neohapsis, Inc.
 # All rights reserved.
@@ -33,7 +33,7 @@ import sys, zipfile, tarfile, os, optparse
 def main(argv=sys.argv):
 	p = optparse.OptionParser(description = 'Create archive containing a file with directory traversal', 
 								prog = 'evilarc',
-								version = '0.1',
+								version = '0.2',
 								usage = '%prog <input file>')
 	p.add_option('--output-file', '-f', dest="out", help="File to output archive to.  Archive type is based off of file extension.  Supported extensions are zip, jar, tar, tar.bz2, tar.gz, and tgz.  Defaults to evil.zip.")
 	p.set_default("out", "evil.zip")
@@ -61,8 +61,8 @@ def main(argv=sys.argv):
 		if options.path and options.path[-1] != '/':
 			options.path += '/'
 
-	zpath = dir*options.depth+options.path+os.path.basename(fname)
-	print "Creating " + options.out + " containing " + zpath;	
+	zpath = dir * options.depth + options.path + os.path.basename(fname)
+	print(f"Creating {options.out} containing {zpath}")
 	ext = os.path.splitext(options.out)[1]
 	if os.path.exists(options.out):
 		wmode = 'a'
@@ -80,7 +80,7 @@ def main(argv=sys.argv):
 	elif ext == ".bz2":
 		mode = "w:bz2"
 	else:
-		sys.exit("Could not identify output archive format for " + ext)
+		sys.exit(f"Could not identify output archive format for {ext}")
 
 	tf = tarfile.open(options.out, mode)
 	tf.add(fname, zpath)
