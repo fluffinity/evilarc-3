@@ -2,6 +2,9 @@
 
 This is a fork of [evilarc](https://github.com/ptoomey3/evilarc).
 
+## License Information
+The licensing information are contained in [evilarc-3.py](./evilarc-3.py)
+
 ## Purpose
 evilarc lets you create a zip file that contains files with directory traversal characters in their embedded path.
 Most commercial zip program (winzip, etc) will prevent extraction of zip files whose embedded files contain paths with directory traversal characters.
@@ -14,10 +17,10 @@ Assuming you have a file `notes.txt` in the same directory as evilarc, the follo
 which attempts to place the file in the unix directory `/etc` when extracted.
 
 ```sh
-./evilarc.py -f evil.zip -o unix notes.txt -p /etc
+./evilarc-3.py -f evil.zip -o unix notes.txt -p /etc
 ```
 
 You can add additional files afterwards by invoking evilarc on the same archive with additional files
 ```sh
-./evilarc.py -f evil.zip -o unix jobs -p /etc/cron.daily/
+./evilarc-3.py -f evil.zip -o unix jobs -p /etc/cron.daily/
 ```
